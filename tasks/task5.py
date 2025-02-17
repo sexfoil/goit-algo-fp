@@ -4,6 +4,7 @@ import uuid
 from queue import Queue
 from collections import deque
 
+COLOR_INITIAL = 0xFF227730
 COLOR_INDEX = 10000
 
 class Node:
@@ -64,7 +65,7 @@ def bfs_visualization(graph, root_val, ax):
     index = 0
     while not queue.empty():
         node = queue.get()
-        color = '#%06x' % (0xFFFFFF - index * COLOR_INDEX)
+        color = '#%06x' % (COLOR_INITIAL + index * COLOR_INDEX)
         color_dict[node] = color
         if node in graph:
             for neighbour in graph[node]:
@@ -85,7 +86,7 @@ def dfs_visualization(graph, root_val, ax):
     index = 0
     while stack:
         node = stack.pop()
-        color = '#%06x' % (0xFFFFFF - index * COLOR_INDEX)
+        color = '#%06x' % (COLOR_INITIAL + index * COLOR_INDEX)
         color_dict[node] = color
         if node in graph:
             neighbors = list(graph[node])
